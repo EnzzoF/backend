@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Professor</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css">
+  <link rel="stylesheet" href="/public/css/login.css">
+</head>
+<body>
+<!-- Container -->
+  <div class="logo-container">
+    <img src="/assets/img/logo.png" alt="Logo" class="logo-img" data-aos="fade-left">
+    <div class="bar" data-aos="fade-left"></div>
+  </div>
+<!-- Final Container  -->
+
+<!-- Menu -->  
+  <div class="menu" data-aos="fade-right">
+    <div class="vertical-line" data-aos="fade-right"></div> 
+    <h2>Bem-vindo ao Mapa-de-Sala do Professor</h2>
+    <p>Aqui você pode acessar todas as informações e recursos necessários para o mapa-de-sala. Faça login com sua conta Google para continuar.</p>
+  </div>
+<!-- Final Menu -->  
+
+
+<!-- Login google -->  
+  <div class="content" data-aos="fade-left">
+    <button onclick="window.location.href='/auth/google'" class="google-button">
+      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google Icon" class="google-icon">
+      Logar com o Google
+    </a>
+  </div>
+ <!-- Final login -->   
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>

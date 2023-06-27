@@ -1,0 +1,62 @@
+body {
+    background: url(/assets/img/background.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Roboto', Arial, sans-serif;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+.container {
+    font-size: 19px;
+    position: relative;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: justify;
+    transition: all 0.3s ease;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    background: white;
+    flex: 1;
+}   
+.year-option {
+    margin: 15px;
+    transition: all 0.3s ease;
+}
+.year-option:hover {
+    transform: scale(1.05);
+}
+header, footer {
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+footer {
+    margin-top: 20px;
+}
+/* Usando azul Notre Dame para os botões */
+.btn-primary {
+    background-color: #04546c;
+    border-color: #04546c;
+}
+.btn-primary:hover{
+    background-color: rgb(221, 200, 10);
+    border-color: rgb(221, 207, 11);
+}
+/* Incluindo logotipo */
+.logo-container {
+    position: absolute; /* Adiciona posicionamento absoluto ao logo-container */
+    top: 0; /* Coloca o elemento no topo */
+    right: 0; /* Coloca o elemento à direita */
+    transform: translate(50%, 0%); /* Move o elemento 50% para a direita e mantém a altura original */
+  }
+  
+.logo-img {
+    width: 50px; /* Ajuste o tamanho da imagem conforme necessário */
+    margin-top: 20px;
+}
+.centered-text {
+    text-align: center;
+}

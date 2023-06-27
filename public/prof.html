@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Menu Professor</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.3/html2canvas.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
+  <link rel="stylesheet" type="text/css" href="/public/css/prof.css">
+  <link rel="stylesheet" type="text/css" href="/public/css/error.css">
+</head>
+
+<body>
+  <!--  Header Cabelalho -->
+  <header class="header">
+    <img src="https://extraneth.notredamecampinas.com.br/images/logo-colorido.svg" id="user-logo">
+    <div class="user-info">
+      <a href="/logout" class="btn btn-secondary">
+        <i class="fas fa-sign-out-alt logout-icon"></i>
+        Sair
+      </a>
+      <div class="separator"></div>
+      <span id="user-name"></span>
+      <img src="" id="user-picture" alt="Foto do Usuário">
+    </div>
+  </header>
+  <!--  Final Header -->
+
+  <!--  Main Container-wrap -->
+  <div class="container-wrap">
+
+    <nav id="studentsAreaContainer">
+      <!--  Nav bar geral -->
+
+      <select id="changeSerie" class="form-control label-serie" onchange="updateURL(this.value);">
+        <!-- Conteudo para trocar Turma-->
+        <option value="6">6º ano </option>
+        <option value="7">7º ano</option>
+        <option value="8">8º ano</option>
+        <option value="9">9º ano</option>
+      </select>
+
+      <div class="sm-3 year-content" id="content-6" style="display: none;">
+        <!-- conteúdo para 6 ANO -->
+        <select id="ChangeClass" class="form-control label-serie" onchange="fetchStudents(this.value);">
+          <option value="6anoA">A</option>
+          <option value="6anoB">B</option>
+          <option value="6anoC">C</option>
+          <option value="6anoD">D</option>
+        </select>
+      </div>
+
+      <div class="sm-3 year-content" id="content-8" style="display: none;">
+        <!-- conteúdo para 8 ANO -->
+        <select id="ChangeClass" class="form-control label-serie" onchange="fetchStudents(this.value);">
+          <option value="8anoA">A</option>
+          <option value="8anoB">B</option>
+          <option value="8anoC">C</option>
+          <option value="8anoD">D</option>
+        </select>
+      </div>
+
+      <div class="sm-3 year-content" id="content-7" style="display: none;">
+        <!-- conteúdo para 7 ANO -->
+        <select id="ChangeClass" class="form-control label-serie" onchange="fetchStudents(this.value);">
+          <option value="7anoA">A</option>
+          <option value="7anoB">B</option>
+          <option value="7anoC">C</option>
+          <option value="7anoD">D</option>
+        </select>
+      </div>
+
+      <div class="sm-3 year-content" id="content-9" style="display: none;">
+        <!-- conteúdo para 9 ANO -->
+        <select id="ChangeClass" class="form-control label-serie" onchange="fetchStudents(this.value);">
+          <option value="9anoA">A</option>
+          <option value="9anoB">B</option>
+          <option value="9anoC">C</option>
+          <option value="9anoD">D</option>
+        </select>
+      </div>
+
+      <button id="swapElements" class="btn btn-secondary" onclick="swapElements()"><span class="arrow-icon">
+          <i class="fas fa-arrow-up"></i>
+          <i class="fas fa-arrow-down"></i>
+        </span>
+      </button>
+      <button id="fectchResponse" onclick="enviarResposta()">Enviar Resposta</button>
+      <button id="sheets" class="btn btn-secondary">Editar Sala</button>
+      <button id="downloadRoom" class="btn btn-secondary">Baixar Mapa-Sala</button>
+      <button id="insertAlunos" class="btn btn-secondary"><i class="fas fa-plus"></i></button>
+      <h1 id="student-count"></h1>
+      <!--Counter Empty-spots e Alunos -->
+    </nav>
+      <div class="screenshotArea">
+        <!-- Area Responsavel pela TakeScreenShoot -->
+
+        <div class="blackboard">
+          Lousa <i class="fas fa-chalkboard-teacher"></i>
+          <span id="data" class="data hidden"></span>
+        </div>
+
+        <div class="classroom">
+          <div class="neutral-area">
+            <div class="desk">
+              Mesa <i class="fas fa-chair"></i>
+            </div>
+
+            <div class="door">
+              Porta <i class="fas fa-door-open"></i>
+            </div>
+          </div>
+          <div class="students-area"></div>
+
+          <!-- Os quadrados dos alunos serão adicionados aqui dinamicamente com JavaScript -->
+        </div>
+
+
+        <div class="backroom">Fundo</div>
+
+      </div>
+  </div> <!--  Final container-wrap -->
+
+  <!-- FINAL Area TakeScreenShot -->
+
+  <!-- SEND MODAL / MODAL ENVIAR IMAGEN PARA EMAIL -->
+  <div id="sendModal" class="custom-alert">
+    <div class="custom-alert-content">
+      <h3>Enviar Mapa-de-sala</h3>
+      <div class="custom-alert-body">
+        <label for="nameInput">Email Tutores:</label>
+        <select id="nameInput">
+          <option value="ebertoncello@notredamecampinas.net.br">6º Ano</option>
+          <option value="enzzocsgo12345678@gmail">7º Ano</option>
+          <option value="teste">8º Ano</option>
+        </select>
+        <label for="subjectInput"> Observação:</label>
+        <input type="text" id="subjectInput">
+        <br>
+        <label for="fileInput">Anexar arquivo:</label>
+        <input type="file" id="fileInput">
+      </div>
+      <div class="custom-alert-actions">
+        <button class="btn btn-secondary" id="cancelButton">Cancelar</button>
+        <button class="btn btn-secondary" id="sendButton">Enviar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINAL SEND MODAL / MODAL ENVIAR IMAGEN PARA EMAIL -->
+
+  <!-- STUDENT FORM para INSERIR ALUNOS -->
+
+  <div class="form-overlay">
+    <form id="student-form">
+      <h1>Inserir Alunos</h1>
+      <button id="close-form" style="float: right;" class="btn btn-secondary">X</button>
+      <h1>Nome e Sobrenome :</h1>
+      <input type="text" id="student-name" name="student-name" placeholder="Nome e Sobrenome:"><br>
+      <br>
+      <h1>Registro Do Aluno :</h1>
+      <input type="text" id="student-ra" name="student-ra" maxlength="8" pattern="\d*" placeholder="Registro Aluno: 8 digitos">
+      <br>
+      <label class="class-name"></label><br>
+      <input type="submit" value="Inserir Aluno" class="btn btn-secondary">
+      <select id="class-name" name="class-name">
+        <option value="8anoA">8anoA</option>
+        <option value="8anoB">8anoB</option>
+        <option value="8anoC">8anoC</option>
+      </select>
+    </form>
+  </div>
+  <!--  FINAL STUDENT FORM para INSERIR ALUNOS -->
+
+  <!-- MODAL PRE VISUALIZAÇAO IMAGEM -->
+  <div id="customAlert" class="custom-alert">
+    <div class="custom-alert-content">
+      <h3>Pré-visualização</h3>
+      <img id="screenshot" style="width: 100%; height: auto; max-height: 400px; object-fit: contain;" />
+      <div class="custom-alert-actions">
+        <a id="downloadLinkImage" download="mapa-de-sala.png" class="btn btn-secondary">Baixar imagem</a>
+        <button class="btn btn-secondary" id="closeAlert">Fechar</button>
+      </div>
+    </div>
+  </div>
+  <!-- FINAL MODAL PRE VISUALIZAÇAO IMAGEM -->
+
+  <!-- Loader -->
+  <div id="loading" class="loading">
+    <div class="loading-inner">
+      <div class="lds-circle">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+</body>
+<!-- Final Loader -->
+
+
+<script>
+  // PEGANDO DO CORPO DO INDEX.js e passando para os ids , nome e foto 
+  const userData = JSON.parse('__USER_DATA__');
+const userId = userData.id;
+const userName = document.getElementById('user-name');
+const userPicture = document.getElementById('user-picture');
+
+const userNameWithId = `${userData.name} ( ${userId})`; // Concatena o nome com o ID
+console.log('idname:', userNameWithId )
+
+userName.textContent = userNameWithId;
+userPicture.src = userData.picture;
+
+  //  Pegando botton cancelar e enviar
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="/public/js/prof-dragdrop.js"></script>
+<script src="/public/js/prof-fetchs.js"></script>
+<script src="/public/js/prof-config.js"></script>
+</html>

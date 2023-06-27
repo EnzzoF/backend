@@ -1,0 +1,591 @@
+:root {
+  /*Students Cores e Gerais*/
+  --font-family: Arial, sans-serif;
+  --button-secondary-color: #094a60;
+  --button-secondary-hover: #0d4d8a;
+  --nav-color:#04546c;
+  --background-color: #EDF2F9;
+  --border-color: #ffae00;
+  --text-color: #04546c;
+  --student-background: #e2e4e7;
+  --student-border: #c7c7c7;
+  --empty-spot-background: #e2e4e7;
+  --date-background: #ffae00;
+  /*Cores modal #SendModal*/
+  --sendModal-backgroundcolor: rgba(0, 0, 0, 0.4);
+  --sendModal-color: #ffffff;
+  /*Cores modal Previsualizaçao*/
+  --custom-alert-backgroundcolor:rgba(0, 0, 0, 0.521);
+  --custom-alert-color: #fefefe;
+  /*Cores modal Inserir Alunos*/
+  --student-form-color: #fefefe;
+  --student-form-border-color: #ffae00;
+}
+
+body {
+  font-family: var(--font-family);
+  margin: 0;
+  padding: 0;
+  background-color: #e2e4e7;
+}
+
+.container-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  background-color: #094a60;
+  color: #fff;
+  padding: 10px;
+  border-bottom: 2px solid #ffae00;
+  margin-bottom: 50px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+#user-name { 
+font-size: 17px;
+color: #ffffffe8; 
+}
+.separator {
+width: 1.5px;
+height: 50px;
+background-color: #035b75;
+margin-right: 10px;
+margin-left: 10px;
+}
+/*Foto retornada do google */ 
+#user-picture {
+width: 55px;
+height: 55px;
+border-radius: 50%;
+margin-right: 10px;
+margin-left: 10px;
+border: 2px solid #ffae00;  
+}
+
+#user-logo {
+  background: url(../images/logo-colorido.svg) no-repeat;
+  background-size: 130px;
+  height: 70px;
+  transition: all .3s ease;
+  width: 140px;
+  margin-left: 10px;
+}
+
+#studentsAreaContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  width: 100%;
+}
+
+.screenshotArea {
+  max-width: 1100px;
+}
+
+.classroom { 
+  border-radius: 5px;
+  padding:  20px 40px 40px 40px;
+  background-color: #fff;
+}
+
+.neutral-area {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+/* Students*/
+.students-area {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px; 
+  max-width: 1200px;
+}
+.student.selected {
+  background-color: #2fff009b; /* Altera a cor da borda para verde */
+  }
+
+.student {
+  color: #04546c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  height: 120px;
+  background-color: var(--student-background);
+  border: 1px solid var(--student-border);
+  cursor: pointer;
+  border-radius: 0.25rem;
+  font-size: 15px;
+}
+
+.student-image {
+  pointer-events: none;
+  width: 65px;
+  height: 65px; 
+  border-radius: 100%;
+  object-fit: cover;
+  margin-bottom: 1px; 
+  margin-top: 1px;
+  border: 1px solid #ffffff;
+  background-color: #EDF2F9;
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+}
+
+.student-name {
+  display: block;
+  text-align: center;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+#student-count {
+  color: #04546c;
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin: 0;
+  order: 2;
+}
+/*Final */
+.empty-spot {
+  color: var(--text-color);
+  justify-content: center;
+  font-weight: 600;
+  background-color: var(--empty-spot-background);
+  border: 1px solid var(--border-color);
+}
+
+#ChangeClass {
+  height: 40px;
+  width: 75px;
+  left: 110px;
+}
+
+#sheets {
+  order: 5;
+}
+
+#swapElements {
+  right: 267px;
+  order: 6;
+} 
+
+#downloadRoom {
+  order: 4;
+}
+
+#insertAlunos {
+  height: 39.5px;
+  order: 1;
+}
+
+.label-serie { /*Alture e Cores*/
+  height: 40px;
+  width: 110px;
+}
+
+/*Estilizaçao changeClass*/
+
+select {
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  color: #1fff01;
+}
+
+
+.btn-secondary {
+  background-color: var(--button-secondary-color);
+  border-color: #056d8d;
+}
+
+.btn-secondary:hover {
+  background-color:var(--button-secondary-hover);
+}
+
+.blackboard,
+.backroom {
+  color: var(--text-color);
+  color: #094a60;
+  width: 100%;
+  text-align: center;
+  padding: 7px 0;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  border-radius: 5px;
+  font-size: 20px;
+  background-color: #ffffff;
+ 
+}
+
+
+.door, .desk {
+  color: #094a60;
+  background-color: #e2e4e7;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 18px;
+  z-index: 1;
+  padding: 15px;
+  
+}
+
+.capture-border {
+  border: 1px solid #bbbbbb;
+}
+
+.data {
+  position: absolute;
+  height: 27px;
+  width: 85px;
+  right: 230px;
+  margin-right: 25px;
+  font-size: 16px;
+  color: var(--text-color);
+  background-color: var(--date-background);
+  border-radius: 3px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 300;
+}
+
+.hidden {
+ display: none;
+}
+
+/*SEÇAO MODAIS ESTILIZANTES*/
+
+/*MODAL ENVIAR IMAGEM E EMAIL*/
+#sendModal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color:var(--sendModal-backgroundcolor)
+  }
+  #sendModal .custom-alert-content {
+  background-color:var(--sendModal-color);
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  text-align: center;
+  }
+  
+  #sendModal .custom-alert-content h3 {
+  margin-top: 0;
+  }
+  
+  #sendModal .custom-alert-body {
+  margin-top: 20px;
+  }
+  
+  #sendModal .custom-alert-body label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  }
+  
+  #sendModal .custom-alert-body input[type="text"],
+  #sendModal .custom-alert-body input[type="file"] {
+  display: block;
+  margin-bottom: 15px;
+  padding: 5px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+  }
+  
+  #sendModal .custom-alert-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  }
+  
+  #sendModal .custom-alert-actions button {
+  padding: 10px;
+  margin-right: 10px;
+  }
+  
+.file-label {
+  display: block;
+  margin-bottom: 10px;
+  color: #04546c;
+  font-weight: bold;
+}
+
+.file-input {
+display: inline-block;
+padding: 5px 10px;
+border: 1px solid #04546c;
+border-radius: 4px;
+background-color: #fff;
+color: #04546c;
+cursor: pointer;
+}
+
+.file-input:focus {
+outline: none;
+box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
+}
+
+#nameInput {
+width: 100%;
+padding: 10px;border: none;
+border-radius: 4px;
+background: #f1f1f1;
+color: #333;
+font-size: 16px;
+cursor: pointer;
+}
+      
+#nameInput:focus {
+outline: none;
+box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+}
+      
+#nameInput option {
+padding: 10px;
+background: #f1f1f1;
+font-size: 16px;
+color: #333;
+}
+/*FINAL MODAL ENVIAR EMAIL E IMAGEM*/
+
+/*MODAL PREVISULIAZAÇAO / SCREENSHOT / DOWNLOAD BUTTON*/
+.custom-alert {
+display: none;
+position: fixed;
+z-index: 1000;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+overflow: auto;
+background-color: var(--custom-alert-backgroundcolor);
+}
+      
+.custom-alert-content {
+background-color: var(--custom-alert-color);
+margin: 15% auto;
+padding: 20px;
+border: 1px solid #888;
+width: 80%;
+max-width: 500px; /* Altere a largura máxima aqui */
+}
+      
+.custom-alert-actions {
+display: flex;
+justify-content: space-between;
+margin-top: 20px;
+}
+/*FINAL MODAL PREVISUALIZAÇAO / SCREENSHOT/ DOWNLOAD BUTTON*/
+
+/*FORMS INSERIR ALUNOS*/
+#student-form {
+  display: none;
+  width: 400px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.253);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1001;
+}
+
+#student-form h1 {
+  font-size: 20px;
+  text-align: center;
+  color: #333333;
+  margin-bottom: 20px;
+}
+
+#student-form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #074374;
+}
+
+#student-form input[type="text"],
+#student-form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  margin-top: 4px;
+  border: none;
+  border-radius: 5px;
+  background-color: #094a6046;
+  font-size: 14px;
+  color: #094a60;
+}
+
+#student-form input[type="text"]::placeholder,
+#student-form select::placeholder {
+  color: #00000069;
+}
+
+#form-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+/*FINAL FORMS ALUNOS*/   
+     
+/*LOADER NOTRE DAME CAMPINAS */
+.loading {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.664);
+z-index: 9999;
+justify-content: center;
+align-items: center;
+      }
+      
+.loading-inner {
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+height: 100%;
+}
+      
+.lds-circle {
+display: inline-block;
+position: relative;
+width: 80px;
+height: 80px;
+}
+      
+.lds-circle div {
+position: absolute;
+top: 0;
+width: 10px;
+height: 10px;
+border-radius: 50%;
+animation: lds-circle 1.2s linear infinite;
+}
+      
+.lds-circle div:nth-child(1) {
+animation-delay: 0s;
+left: 50px;
+top: 8px;
+background: #ffae00;
+}
+      
+.lds-circle div:nth-child(2) {
+animation-delay: -0.1s;
+left: 42px;
+top: 25px;
+background: #094a60;
+}
+      
+.lds-circle div:nth-child(3) {
+animation-delay: -0.2s;
+left: 26px;
+top: 42px;
+background: #ffae00;
+}
+      
+.lds-circle div:nth-child(4) {
+animation-delay: -0.3s;
+left: 8px;
+top: 50px;
+background: #094a60;
+  }
+      
+.lds-circle div:nth-child(5) {
+animation-delay: -0.4s;
+left: -9px;
+top: 42px;
+background: #ffae00;
+      }
+      
+.lds-circle div:nth-child(6) {
+animation-delay: -0.5s;
+left: -25px;
+top: 25px;
+background: #094a60;
+      }
+      
+.lds-circle div:nth-child(7) {
+animation-delay: -0.6s;
+left: -33px;
+top: 8px;
+background: #ffae00;
+      }
+      
+.lds-circle div:nth-child(8) {
+animation-delay: -0.7s;
+left: -25px;
+top: -9px;
+background: #094a60;
+}
+      
+.lds-circle div:nth-child(9) {
+animation-delay: -0.8s;
+left: -9px;
+top: -25px;
+background: #ffae00;
+      }
+      
+.lds-circle div:nth-child(10) {
+animation-delay: -0.9s;
+left: 8px;
+top: -33px;
+background: #094a60;
+}
+      
+@keyframes lds-circle {
+       0%,
+        39%,
+        100% {
+          opacity: 1;
+        }
+        40%,
+        80% {
+          opacity: 0;
+        }
+      }
+      
+.loading-text {
+color: #fff;
+font-size: 16px;
+margin-top: 10px;
+} 
+/*FINAL LOADER NOTRE DAME CAMPINAS */
+
+
