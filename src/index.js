@@ -132,6 +132,11 @@ app.get('/prof.html', (req, res) => {
     }
   });
 
+  app.get('/hello', (req, res) => {
+    res.send('Hello, World!');
+  });
+  
+
   // Rota para inter.html
 
 app.get('/inter.html', (req, res) => {
